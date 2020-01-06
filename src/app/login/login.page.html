@@ -1,0 +1,81 @@
+<ion-header>
+
+</ion-header>
+
+ 
+<ion-content padding>
+<br>
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
+ 
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="assets/tec3.png" class="center" width="80" height="80">
+      </a>
+    </div>
+    <br>
+    <div style="font-size: medium; text-align:center;">
+      Login to your Trovilo Account
+    </div>
+
+<br><br>
+
+    <ion-item>
+      <ion-label  position="floating" color="primary">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message" style="font-size: small;" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+ 
+    <ion-item>
+      <ion-label  position="floating" color="primary">Password</ion-label>
+      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+    </ion-item>
+    
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message" style="font-size: small;" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <br>
+
+    <ion-button style="font-size: x-small;" expand="block" fill="clear" routerLink="/reset-password">
+      forgot my password
+    </ion-button>
+    
+<br>
+
+    <ion-button  class="submit-btn center" type="submit" [disabled]="!validations_form.valid"><b>Log In</b>
+    </ion-button>
+    <br>
+    <div style="text-align:center; font-size: x-small;">
+      OR
+    </div>
+    <br>
+    <ion-button  class="center registerbt" fill="outline"  (click)="goToRegisterPage()" ><b>Register</b>
+    </ion-button>
+ 
+    <label class="error-message">{{errorMessage}}</label>
+  </form>
+  
+ 
+</ion-content>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">  
+    <ion-fab-button>  
+      <ion-icon name="settings"></ion-icon>  
+    </ion-fab-button>  
+    <ion-fab-list side="top">  
+      <ion-fab-button><ion-icon name="information"></ion-icon></ion-fab-button>  
+    </ion-fab-list>  
+    <ion-fab-list side="start">  
+      <ion-fab-button><ion-icon name="contact"></ion-icon></ion-fab-button>  
+    </ion-fab-list>
+  </ion-fab>  

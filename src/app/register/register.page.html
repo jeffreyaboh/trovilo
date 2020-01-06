@@ -1,0 +1,83 @@
+
+ 
+<ion-content padding>
+
+
+
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="tryRegister(validations_form.value)">
+ 
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="assets/tec3.png" class="center" width="80" height="80">
+      </a>
+    </div>
+    <br>
+    <div style="font-size: medium; text-align:center;">
+      Create a Trovilo Account
+    </div>
+
+<br><br>
+
+<ion-item>
+  <ion-label  position="floating" color="primary">Name</ion-label>
+  <ion-input type="text"  class="form-controll"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label  position="floating" color="primary">Company</ion-label>
+  <ion-input type="text"  class="form-controll"></ion-input>
+</ion-item>
+
+
+    <ion-item>
+      <ion-label  position="floating" color="primary">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message" style="font-size: small;" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+ 
+    <ion-item>
+      <ion-label  position="floating" color="primary">Password</ion-label>
+      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message" style="font-size: small;" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+ <br>
+ <br>
+
+ <div style="text-align:center; font-size: x-small;">
+  * By signing up, you agree to our Terms of Use, Privacy Policy and to receive Trovilo emails, newsletters & updates.
+</div>
+    
+   <!------ <ion-button  class="submit-btn center" type="submit"  [disabled]="!validations_form.valid">Register</ion-button>
+    -->
+    
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
+  </form>
+  <!-----
+  <p class="go-to-login">Already have an account? <a (click)="goLoginPage()">Try to Log In.</a></p>
+-->
+</ion-content>
+
+
+<ion-footer (click)="tryRegister(validations_form.value)">
+  <ion-toolbar style="text-align:center;" color="secondary">
+    <ion-title>Create an Account</ion-title>
+  </ion-toolbar>
+</ion-footer>
+<ion-footer>
+  <ion-toolbar style="text-align:center;">
+  <ion-back-button defaultHref="login"></ion-back-button>
+</ion-toolbar>
+</ion-footer>
