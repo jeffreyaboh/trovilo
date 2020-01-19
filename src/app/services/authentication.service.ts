@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +13,14 @@ import 'firebase/firestore';
 export class AuthenticationService {
   email: string;
   public userId: string;
+  currentUser: any;
+  database: any;
+  uid: string;
+  user: string;
+  fullname: string;
+  company: string;
 
-
-  constructor() { }
+  constructor(private afAuth: AngularFireAuth) { }
 
 
 
@@ -23,7 +32,7 @@ export class AuthenticationService {
         firebase
           .firestore()
           .doc(`/userProfile/${newUserCredential.user.uid}`)
-          .set ({ string: value.email });
+          .set ({ fullname: value.first, company: value.last, email: value.email, UserId: newUserCredential.user.uid });
       })
       .catch(error => {
         console.error(error);
@@ -75,5 +84,29 @@ export class AuthenticationService {
    userDetails(){
      return firebase.auth().currentUser;
    }
+
+   updateimage(imageurl) {
+    var promise = new Promise((resolve, reject) => {
+        firebase.auth().currentUser.updateProfile({
+            displayName: firebase.auth().currentUser.displayName,
+            photoURL: imageurl      
+        }).then(() => {
+            firebase.database().ref('/users/' + firebase.auth().currentUser.uid).update({
+            displayName: firebase.auth().currentUser.displayName,
+            photoURL: imageurl,
+            uid: firebase.auth().currentUser.uid
+            }).then(() => {
+                resolve({ success: true });
+                }).catch((err) => {
+                    reject(err);
+                })
+        }).catch((err) => {
+              reject(err);
+           })  
+    })
+    return promise;
+}
+
+
 
 }

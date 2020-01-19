@@ -16,19 +16,37 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
  
+import {  FormsModule } from '@angular/forms';
+
+
+import { FcmService } from 'src/app/services/fcm.service';
+import { Firebase } from '@ionic-native/firebase/ngx';
+
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireAuthModule, AngularFireDatabaseModule],
+  imports: [BrowserModule, IonicModule.forRoot(), 
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    AppRoutingModule, AngularFireAuthModule, FormsModule, AngularFireDatabaseModule],
   providers: [
     StatusBar,
     SplashScreen,
     ReactiveFormsModule,
     AuthenticationService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    FcmService,
+    Firebase,
+   FormsModule,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: FirestoreSettingsToken, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

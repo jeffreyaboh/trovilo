@@ -5,6 +5,8 @@ import 'firebase/firestore';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LoadingController } from '@ionic/angular';
 
+
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,7 @@ export class ProfileService {
   public currentUser: firebase.User;
   public loading: HTMLIonLoadingElement;
 
-  constructor(private authService: AuthenticationService, public loadingCtrl: LoadingController,) {}
+  constructor(private db : AngularFireDatabase, private authService: AuthenticationService, public loadingCtrl: LoadingController,) {}
 
   async getUserProfile(): Promise<firebase.firestore.DocumentSnapshot> {
     this.loading = await this.loadingCtrl.create();
@@ -65,4 +67,6 @@ export class ProfileService {
       console.error(error);
     }
   }
+
+
 }

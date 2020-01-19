@@ -5,6 +5,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -55,8 +56,15 @@ export class LoginPage implements OnInit {
  
  
   async loginUser(value){
-    this.loading = await this.loadingCtrl.create();
-    await this.loading.present();
+    this.loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+      spinner: 'bubbles',
+      translucent: true,
+      animated: true,
+  keyboardClose: true,
+  });
+  await this.loading.present();
+    
     
     this.authService.loginUser(value)
     .then(res => {
@@ -74,5 +82,27 @@ export class LoginPage implements OnInit {
   goToRegisterPage(){
     this.navCtrl.navigateForward('register');
   }
+
+
+
+  
+
+  //displayPreloader() : void
+//  {
+//    const loading = await this.loadingCtrl.create({
+//      message: 'Please wait...',
+//  });
+//  await loading.present();
+//  }
+
+
+
+ // hidePreloader() : void
+ // {
+ //    this.loading.dismiss();
+ // }
+
+
+
 
 }

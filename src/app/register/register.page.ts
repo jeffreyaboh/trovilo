@@ -42,6 +42,12 @@ export class RegisterPage implements OnInit {
  
   ngOnInit(){
     this.validations_form = this.formBuilder.group({
+      first: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      last: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')

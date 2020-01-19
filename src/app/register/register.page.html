@@ -19,17 +19,20 @@
 <br><br>
 
 <ion-item>
+  <ion-icon name="contact" slot='start' color='primary'></ion-icon>
   <ion-label  position="floating" color="primary">Name</ion-label>
-  <ion-input type="text"  class="form-controll"></ion-input>
+  <ion-input type="text" formControlName="first" class="form-controll"></ion-input>
 </ion-item>
 
 <ion-item>
+  <ion-icon name="briefcase" slot='start' color='primary'></ion-icon>
   <ion-label  position="floating" color="primary">Company</ion-label>
-  <ion-input type="text"  class="form-controll"></ion-input>
+  <ion-input type="text" formControlName="last" class="form-controll"></ion-input>
 </ion-item>
 
 
     <ion-item>
+      <ion-icon name="at" slot='start' color='primary'></ion-icon>
       <ion-label  position="floating" color="primary">Email</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
@@ -42,6 +45,7 @@
     </div>
  
     <ion-item>
+      <ion-icon name="lock" slot='start' color='primary'></ion-icon>
       <ion-label  position="floating" color="primary">Password</ion-label>
       <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
     </ion-item>
