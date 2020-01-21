@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 
 import { FcmService } from 'src/app/services/fcm.service';
 import { ToastController } from '@ionic/angular';
-
-import { AngularFireAuth } from 'angularfire2/auth'
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -29,8 +29,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private zone: NgZone,
+    public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
-
     private navCtrl: NavController,
     private authService: AuthenticationService,
     public loadingCtrl: LoadingController,

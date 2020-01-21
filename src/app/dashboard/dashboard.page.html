@@ -27,26 +27,25 @@
   </ion-content>
 
 
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [routerLink]="['/dashboard']">
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/idea-list']">
+        <ion-icon name="people"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/activity']">
+        <ion-icon name="clipboard"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/home']">
+        <ion-icon name="trash"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
 
 
 
 
 
-
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button [routerLink]="['/dashboard']">
-      <ion-icon name="home"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button (click)="/idea-list">
-      <ion-icon name="people"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/activity']">
-      <ion-icon name="clipboard"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/signin']">
-      <ion-icon name="trash"></ion-icon>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>

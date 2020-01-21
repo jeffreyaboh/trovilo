@@ -27,6 +27,13 @@ import {  FormsModule } from '@angular/forms';
 import { FcmService } from 'src/app/services/fcm.service';
 import { Firebase } from '@ionic-native/firebase/ngx';
 
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { MediaCapture } from '@ionic-native/media-capture/ngx';
+import { Media } from '@ionic-native/media/ngx';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
@@ -36,7 +43,7 @@ firebase.initializeApp(environment.firebase);
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AppRoutingModule, AngularFireAuthModule, FormsModule, AngularFireDatabaseModule],
+    AppRoutingModule,  AngularFireAuthModule, FormsModule, AngularFireDatabaseModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -45,6 +52,12 @@ firebase.initializeApp(environment.firebase);
     FcmService,
     Firebase,
    FormsModule,
+   ImagePicker,
+   MediaCapture,
+   File,
+   Media,
+   StreamingMedia,
+   PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {} }
   ],
