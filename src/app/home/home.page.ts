@@ -11,7 +11,8 @@ import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
- 
+
+
 const MEDIA_FOLDER_NAME = 'my_media';
  
 @Component({
